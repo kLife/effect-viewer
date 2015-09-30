@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>エフェクトビュアー - kLife</title>
+	
+	<!-- ライブラリ -->
+	<script src="../common-content/lib/jquery/2.1.1/jquery.min.js"></script>
+	<script src="../common-content/lib/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<link href="../common-content/lib/colpick/2.0.2/colpick.css" rel="stylesheet" />
+	<script src="../common-content/lib/colpick/2.0.2/colpick.js"></script>
+	<link href="../common-content/lib/qtip2/2.2.1/jquery.qtip.min.css" rel="stylesheet" />
+	<script src="../common-content/lib/qtip2/2.2.1/jquery.qtip.min.js"></script>
+	<script src="../common-content/lib/jszip/2.4.0/jszip.min.js"></script>
+	<script src="../common-content/lib/gifjs/0.1.6/gif.js"></script>
+	
+	<!-- Koukun -->
+	<link href="../common-content/koukun/css/ui-grid.css?v=20141204" rel="stylesheet" />
+	<link href="../common-content/koukun/css/ui-select.css?v=20141204" rel="stylesheet" />
+	<link href="../common-content/koukun/css/ui-number-input.css?v=20141204" rel="stylesheet" />
+	<script src="../common-content/koukun/js/core.js?v=20150102"></script>
+	<script src="../common-content/koukun/js/ui-grid.js?v=20141204"></script>
+	<script src="../common-content/koukun/js/ui-select.js?v=20141204"></script>
+	<script src="../common-content/koukun/js/ui-number-input.js?v=20141204"></script>
+	<script src="../common-content/koukun/js/util-resource.js?v=20150102"></script>
+	<script src="../common-content/koukun/js/util-logger.js?v=20141204"></script>
+	<script src="../common-content/koukun/js/util-stream.js?v=20141204"></script>
+	<script src="../common-content/koukun/js/util-file-saver.js?v=20141204"></script>
+	
+	<!-- メイン -->
+	<link href="./css/main.css?v=20141210" rel="stylesheet" />
+	<script src="./js/intro.js?v=20150103"></script>
+	<script src="./js/manager.js?v=20150420"></script>
+	<script src="./js/file-processing.js?v=20150103"></script>
+	<script src="./js/main.js?v=20150103"></script>
+	
+</head>
+<body>
+	<div class="language-switcher">
+		Language
+		<select>
+			<option value="en">English</option>
+			<option value="ja">日本語</option>
+		</select>
+	</div>
+	
+	<div class="effect-viewer">
+		
+		<div class="mask-drop"></div>
+		
+		<div class="mask-gif">
+			<div class="generate-gif">
+				<div class="generate-gif-range-select">
+					<span class="generate-gif-range-text">範囲</span> 
+					<span class="numin-gif-range-min"></span>
+					～
+					<span class="numin-gif-range-max"></span>
+				</div>
+				<div class="generate-gif-frame-rate-select">
+					<span class="generate-gif-frame-rate-text">フレームレート</span> 
+					<span class="numin-gif-frame-rate"></span>
+				</div>
+				<div class="generate-gif-control">
+					<input class="generate-gif-generate" type="button" value="GIF生成" />
+					<input class="generate-gif-cancel" type="button" value="キャンセル" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="mask-progress">
+			<div class="save-progress">
+				<div class="save-progress-text">データ作成中...</div>
+				<div class="save-progress-parent"><div></div></div>
+				<input class="save-progress-cancel" type="button" value="キャンセル" />
+			</div>
+		</div>
+		
+		<div class="control-area">
+			
+			<div class="control-left">
+				<div class="file-list show-qtip">
+					<!-- UI_Grid fileList -->
+				</div>
+				<div class="file-list-form">
+					<span class="notice"></span>
+					<button class="file-list-nav-clear">全てクリア</button>
+					<span class="show-qtip-target">？</span>
+				</div>
+				<div class="file-info">
+					<table class="file-info-table">
+						<tr><th class="file-info-count-text">フレーム数</th><td class="file-info-count"></td></tr>
+						<tr><th class="file-info-type-text">エフェクトタイプ</th><td class="file-info-type"></td></tr>
+						<tr><th class="file-info-color-text">色タイプ</th><td class="file-info-color"></td></tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="control-right">
+				<div class="frame-list show-qtip">
+					<!-- UI_Grid frameList -->
+				</div>
+				<div class="frame-list-form">
+					<button class="frame-list-nav-up">↑</button>
+					<button class="frame-list-nav-down">↓</button>
+					<button class="frame-list-nav-play" >再生</button>
+					<button class="frame-list-nav-stop" >停止</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="view-control-area">
+			<div class="palette-control-container">
+				<div>
+					<label><input type="checkbox" class="view-use-palette" checked /><span>パレット</span></label>
+					<div class="palette-select show-qtip"></div>
+					<div class="palette-number-select"></div>
+				</div>
+				<div>
+					<label><input type="checkbox" class="view-use-background" /><span>背景色</span></label>
+					<div class="color-picker show-qtip"></div>
+				</div>
+			</div>
+			<div class="view-control-container show-qtip">
+				<div>
+					<label><input type="checkbox" class="view-use-margin" checked /><span>位置の調整</span></label>
+					<label><input type="checkbox" class="view-use-opacity" /><span>本体の透過</span></label>
+				</div>
+				<div>
+					<label><input type="checkbox" class="view-show-body" checked /><span>本体の表示</span></label>
+					<label><input type="checkbox" class="view-show-shadow" checked /><span>影の表示</span></label>
+					<label><input type="checkbox" class="view-show-outline" /><span>輪郭の表示</span></label>
+				</div>
+			</div>
+		</div>
+		
+		<div class="view-area">
+			<canvas class="view-port" width=100 height=100></canvas>
+		</div>
+		
+		<div class="image-output-area show-qtip">
+			<button class="save-image">この画像を保存</button>
+			<button class="save-all-image">全ての画像を保存</button>
+			<button class="save-gif">GIF形式で保存</button>
+			<label><input type="checkbox" class="output-zero-fill" checked /><span>フレーム数のゼロ埋め</span></label>
+		</div>
+		
+	</div>
+</body>
+</html>
