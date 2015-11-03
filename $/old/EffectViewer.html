@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<title>タイトル</title>
+	<style>
+	</style>
+<script src="jquery-1.10.1.js"></script>
+</head>
+<body>
+
+<script>
+	(function() {
+		function loadStyleFile(url) {
+			$("<link>").attr({
+				"rel":"stylesheet",
+				"type": "text/css",
+				"href": url
+			}).appendTo("head");
+		}
+		loadStyleFile("colpick.css");
+		loadStyleFile("EffectViewerStyle_0222.css");
+	})();
+</script>
+
+
+<div id="efv_effectViewer">
+	<div id="efv_dropArea"></div>
+	<div id="efv_maskArea"><div id="efv_maskFirstText">読み込み中...</div></div>
+	<div id="efv_maskInner">
+		<br>
+		<div id="efv_maskText">データ作成中...</div>
+		<div id="efv_progressParent"><div id="efv_progressChild"></div></div>
+		<br>
+		<input id="efv_cancelOut" type="button" value="キャンセル" />
+	</div>
+
+
+	<div id="efv_fileArea">
+		<table class="efv_fileTable" style="position:absolute">
+			<thead>
+				<tr>
+					<td width="150">ファイル名</td>
+					<td width="50">拡張子</td>
+					<td width="110">タイプ</td>
+					<td width="140">パレットファイル</td>
+				</tr>
+			</thead>
+		</table>
+		<div id="efv_fileTableSpace">
+			<table class="efv_fileTable">
+				<tbody id="efv_fileTbody">
+					<tr>
+						<td width="150">-</td>
+						<td width="50">-</td>
+						<td width="110">-</td>
+						<td width="140">-</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							ファイルをこの中にドロップしてください。<br>
+							複数のファイルをドロップできます。<br>
+							<br>
+							読み込める拡張子は<br>
+							sad , sd , rfo , rso , rbd , smi , mpr , plt<br>
+							<br>
+							pltファイルを読み込む場合も、ドロップしてください。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="efv_settingFileSpace">
+		<span id="efv_noticeError">エラーです。</span>
+		<input type="button" id="efv_inClearAllFile" value="全クリア" />
+	</div>
+
+	<div id="efv_leftColumn">
+		<div id="efv_comaArea">
+			<table class="efv_comaTable" style="position:absolute">
+				<thead>
+					<tr>
+						<td width="30">コマ</td>
+						<td width="40">幅 px</td>
+						<td width="40">高さ px</td>
+					</tr>
+				</thead>
+			</table>
+			<div id="efv_comaTableSpace">
+				<table class="efv_comaTable">
+					<tbody id="efv_comaTbody">
+						<tr>
+							<td width="30">-</td>
+							<td width="40">-</td>
+							<td width="40">-</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="efv_btnSpace">
+			<input type="button" id="efv_inBtnNext" value="↓" style="width:30px" /> 
+			<input type="button" id="efv_inBtnPrev" value="↑" style="width:30px" /> 
+			<input type="button" id="efv_inBtnPlay" value="再生" style="width:40px" /> 
+			<input type="button" id="efv_inBtnStop" value="停止" style="width:40px" /> 
+		</div>
+		<div id="efv_comaCountView">0 / 0</div>
+		<div id="efv_zipArea">
+			<input id="efv_outImg" type="button" value="画像を保存" />
+			<input id="efv_outZip" type="button" value="全て保存" />
+			<span id="efv_zipUrl"></span>
+		</div>
+	</div>
+
+	<div  id="efv_rightColumn">
+		<div class="efv_settingSpace">
+			<label for="efv_inUseOpacity"><input type="checkbox" id="efv_inUseOpacity" />透過</label>
+			<label for="efv_inShowShadow"><input type="checkbox" id="efv_inShowShadow" />影</label>
+			<label for="efv_inShowOutline"><input type="checkbox" id="efv_inShowOutline" />輪郭</label>
+			<label for="efv_inNoMargin"><input type="checkbox" id="efv_inNoMargin" />位置の調整無し</label>
+			<br />
+			<label for="efv_inBGColor"><input type="checkbox" id="efv_inBGColor" />背景色</label>
+			<div class="color-box"></div>
+			<label id="efv_labelPltSelect">&nbsp;パレット <select id="efv_inPltSelect">
+				<option value="0" selected>デフォルト</option>
+			</select></label>
+			
+		</div>
+		<div id="efv_canvasSpace">
+			<canvas id="efv_canvas" width=100 height=100></canvas>
+		</div>
+	</div>
+</div>
+
+<div id="debug-area"></div>
+
+<script src="jszip.min.js"></script>
+<script src="colpick.js"></script>
+<script src="EffectViewer_2014_0621.js"></script>
+<script>
+	$("#efv_maskArea").delay(100).slideUp(1500, function(){
+		$(this).text("");
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+﻿#efv_effectViewer {
+	/*margin: 0 auto;*/
+	padding: 0;
+	width: 520px;
+	height: 530px;
+	background: #EEE;
+
+    font-size: 12px;
+    line-height: 16px;
+    font-family: Osaka, "ＭＳ Ｐゴシック", sans-serif;
+	border: 1px solid #000;
+	position: relative;
+}
+#efv_dropArea {
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	width: 520px;
+	height: 530px;
+	z-index: 100;
+	display: none;
+
+	background: #BBF;
+	border: solid 2px #00F;
+	-moz-user-select:-moz-none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+}
+
+#efv_maskArea {
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	width: 520px;
+	height: 530px;
+	z-index: 100;
+
+	background: #AAA;
+	border: solid 2px #555;
+	-moz-user-select:-moz-none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+
+	text-align: center;
+
+	font-size: 35px;
+}
+
+#efv_maskFirstText {
+	margin-top: 100px;
+}
+
+#efv_maskInner {
+	position: absolute;
+	left: 175px;
+	top: 100px;
+	width: 150px;
+	height: 100px;
+	padding: 10px;
+	border: 1px #000 solid;
+	background: #FFF;
+	z-index: 101;
+	text-align: center;
+	display: none;
+}
+
+#efv_progressParent {
+	margin: 0 auto;
+	width: 130px;
+	height: 10px;
+	background: #FFF;
+	border: 1px #000 solid;
+	border-radius: 5px;
+}
+
+#efv_progressChild {
+	width: 0;
+	height: 6px;
+	border-top: solid 2px #bbb;
+	border-bottom: solid 2px #555;
+	border-radius: 5px;
+	background: #888;
+}
+
+
+.efv_column_active {
+	background: #DDE !important;
+}
+
+#efv_fileArea {
+	background: #F5F5F5;
+	width: 500px;
+	height: 143px;
+	overflow: hidden;
+	margin: 8px;
+	padding: 0;
+	border: 1px solid #AAA;
+}
+#efv_fileTableSpace {
+	width: 500px;
+	height: 160px;
+	overflow: scroll;
+}
+.efv_fileTable {
+	border-collapse: collapse;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: Osaka, "ＭＳ Ｐゴシック", sans-serif;
+	-moz-user-select:-moz-none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+	cursor: default;
+}
+.efv_fileTable thead tr {
+	height: 18px;
+}
+.efv_fileTable thead tr td {
+	background: #DDD;
+	border: solid 1px #AAA;
+	padding: 1px 3px;
+	text-align: center;
+}
+#efv_fileTbody tr {
+	height: 18px;
+}
+#efv_fileTbody tr td {
+	background-color: #FFF;
+	border: solid 1px #AAA;
+	padding: 1px 3px;
+	text-align: left;
+}
+
+
+.efv_settingFileSpace {
+	margin: 0 5px;
+	width: 500px;
+	text-align: right;
+}
+
+#efv_noticeError {
+	color: #F00;
+	display: none;
+}
+
+
+
+
+#efv_comaArea {
+	background: #F5F5F5;
+	width: 150px;
+	height: 248px;
+	overflow: hidden;
+	padding: 0;
+	border: 1px solid #AAA;
+	position:relative;
+}
+#efv_comaTableSpace {
+	width: 150px;
+	height: 265px;
+	overflow: scroll;
+}
+.efv_comaTable {
+	border-collapse: collapse;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: Osaka, "ＭＳ Ｐゴシック", sans-serif;
+	-moz-user-select:-moz-none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+	cursor: default;
+}
+.efv_comaTable thead tr {
+	height: 18px;
+}
+.efv_comaTable thead tr td {
+	background: #DDD;
+	border: solid 1px #AAA;
+	padding: 1px 3px;
+	text-align: center;
+}
+#efv_comaTbody tr {
+	height: 18px;
+}
+#efv_comaTbody tr td {
+	background-color: #FFF;
+	border: solid 1px #AAA;
+	padding: 1px 3px;
+	text-align: right;
+}
+
+#efv_leftColumn {
+	float: left;
+	width: 160px;
+	margin: 8px 0 0 8px;
+}
+#efv_rightColumn {
+	float: left;
+	width: 340px;
+	margin: 8px 0 0 8px;
+}
+
+.efv_btnSpace {
+	width: 152px;
+	margin: 3px 0;
+	-moz-user-select:-moz-none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+}
+
+.efv_settingSpace {
+	width: 330px;
+	height: 40px;
+	background: #CCC;
+	border: 1px solid #AAA;
+	border-bottom-width: 0;
+	-moz-user-select:-moz-none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+}
+.efv_settingSpace label {
+	margin-left: 2px;
+	background: #DDF;
+}
+
+.efv_settingSpace .color-box {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -4px;
+	width: 40px;
+	height: 14px;
+	border: 1px solid #777;
+}
+
+#efv_labelPltSelect {
+	display: none;
+}
+
+#efv_canvasSpace {
+	width: 330px;
+	height: 280px;
+	border: 1px solid #AAA;
+	background: #DDD;
+	overflow: visible;
+	-moz-user-select:-moz-none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+}
+
+#efv_canvas {
+	border: 1px solid #AAA;
+	margin: 5px;
+}
+
+#efv_comaCountView {
+	text-align: right;
+	margin: 5px 5px 0 0;
+	width: 150px;
+	height: 15px;
+}
+
+#efv_zipArea {
+	background: #DDD;
+	width: 155px;
+	margin: 5px 0 0 0px;
+	text-align: left;
+	border: 1px solid #888;
+}
+
+#efv_zipArea .downloadButton {
+	width: 22px;
+}
+
+
+
+
+#debug-area {
+	font-size: 18px;
+}
+
+#debug-area td {
+	background-color: #F8F8F8;
+}
+
+
+#debug-area td:hover {
+	background-color: #FFE;
+}
